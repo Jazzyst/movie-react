@@ -1,0 +1,1 @@
+export { BtnSearch } from './BtnSearch';
