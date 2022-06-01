@@ -3,7 +3,7 @@ import './Header.scss';
 import { Logo } from "../../Components/Logo";
 import { BtnAddMovie } from "../../Components/BtnAddMovie";
 import { SearchInput } from "../../Components/SearchInput";
-import { BtnSearch } from "../../Components/BtnSearch/";
+import { BtnSearch } from "../../Components/BtnSearch";
 
 export function Header() {
   return (
