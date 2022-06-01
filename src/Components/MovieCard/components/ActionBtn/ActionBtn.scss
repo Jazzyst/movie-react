@@ -1,0 +1,14 @@
+@import '../../../../services/helpers/variables';
+
+.action-btn {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 45px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background: $color-grey url('../../../../services/images/dots-icon.svg') no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+}

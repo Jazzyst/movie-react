@@ -1,0 +1,1 @@
+export { BtnAddMovie } from './BtnAddMovie';

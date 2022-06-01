@@ -1,0 +1,39 @@
+@import '../../services/helpers/variables';
+
+.select-wrap{
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  width: 25%;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-transform: uppercase;
+    color: $color-lightgrey;
+  }
+
+  &__select {
+    appearance: none;
+    background-color: $color-darkgrey;
+    color: $color-white;
+    font-size: 16px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .arrow-down {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $color-pink;
+  }
+}

@@ -4,64 +4,68 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
-    entry: ['./src/index.js'],
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dev')
+  mode: 'development',
+  entry: ['./src/index.js'],
+  output: {
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dev')
+  },
+  resolve: {
+    modules: [path.resolve(__dirname, './src'), 'node_modules'],
+    extensions: ['.js', '.jsx']
+  },
+  devtool: 'source-map',
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dev")
     },
-    resolve: {
-        modules: [path.resolve(__dirname, './src'), 'node_modules'],
-        extensions: ['.js', '.jsx']
-    },
-    devtool: 'source-map',
-    devServer: {
-        static: {
-            directory: path.join(__dirname, "dev")
-        },
-        compress: true,
-        port: 5000,
-        open: true
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
-            },
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: "html-loader"
-                    }
-                ]
-            },
-            {
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: "css-loader" },
-                    { loader: "sass-loader"}
-                ]
-            },
+    compress: true,
+    port: 5000,
+    open: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "html-loader"
+          }
         ]
-    },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html",
-            vars: {}
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[name].css'
-        })
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {loader: MiniCssExtractPlugin.loader},
+          {loader: "css-loader"},
+          {loader: "sass-loader"}
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      }
     ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+      vars: {}
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[name].css'
+    })
+  ]
 };
