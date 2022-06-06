@@ -1,0 +1,64 @@
+@import '../../services/helpers/variables';
+
+.movie-card {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 0 1 25%;
+  position: relative;
+  height: 600px;
+  list-style: none;
+  padding: 40px 40px 0;
+  margin-bottom: 30px;
+
+  &__info {
+    padding-top: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+
+    &-top{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+
+    &-bottom {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  &__image {
+    img{
+      width: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 22px;
+    color: $color-white;
+  }
+
+  &__release-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    border: 1px solid $color-white;
+    border-radius: 3px;
+    padding: 5px;
+  }
+
+  &__genre {
+    display: flex;
+    justify-content: flex-start;
+    color: $color-white;
+    font-size: 14px;
+    padding-top: 10px;
+  }
+
+  &:hover .action-btn {
+    display: flex;
+  }
+}

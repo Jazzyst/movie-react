@@ -1,0 +1,9 @@
+@import '../../services/helpers/variables';
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background-color: $color-grey;
+}

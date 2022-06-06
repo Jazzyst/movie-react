@@ -1,0 +1,36 @@
+@import '../../services/helpers/variables';
+
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  padding: 20px 50px 150px 50px;
+  background-image: url('../../services/images/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+
+  &__logo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__title {
+    display: flex;
+    text-transform: uppercase;
+    margin: 35px 45px;
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: $color-white;
+    font-weight: 300;
+  }
+
+  &__search {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 50px;
+  }
+}

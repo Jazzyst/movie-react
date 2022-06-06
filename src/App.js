@@ -1,10 +1,12 @@
 import React from 'react';
+import { MainPage } from "./Pages/MainPage";
+import './App.scss';
 
 function App() {
     return (
-        <div>
-            <h1>React is worked</h1>
-        </div>
+        <>
+            <MainPage/>
+        </>
     )
 }
 

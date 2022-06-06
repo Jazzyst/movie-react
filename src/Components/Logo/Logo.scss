@@ -1,0 +1,8 @@
+@import '../../services/helpers/variables';
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: $color-pink;
+  font-size: 22px;
+}

@@ -1,0 +1,31 @@
+@import '../../services/helpers/variables';
+
+.filters{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 40%;
+  padding-left: 0;
+
+  &__item {
+    position: relative;
+    list-style: none;
+    text-transform: uppercase;
+    color: $color-white;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      width: 100%;
+      display: block;
+      height: 2px;
+      background-color: transparent;
+    }
+
+    &.active::after {
+      background-color: $color-pink;
+    }
+  }
+}

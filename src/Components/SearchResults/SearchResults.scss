@@ -1,0 +1,12 @@
+@import '../../services/helpers/variables';
+
+.search-result {
+  margin: 0 40px;
+
+  .filters-wrap{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 2px solid $color-grey;
+  }
+}
