@@ -1,0 +1,95 @@
+@import "../../services/helpers/variables";
+
+.movie-details {
+  display: flex;
+  flex-flow: column nowrap;
+  position: fixed;
+  height: 288px;
+  top: 0;
+  width: 100%;
+  padding: 35px 0 65px;
+  background-color: rgba(0,0,0,0.74);
+  backdrop-filter: blur(20px);
+  z-index: 2;
+
+  &__header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 35px;
+
+    .search-button {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 3px solid $color-pink;
+      background-color: rgba(0,0,0,0.74);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-self: center;
+    width: 90%;
+    padding: 20px 40px 40px;
+
+    &-image {
+      width: 40%;
+      & img{
+        width: 150px;
+        height: 275px;
+      }
+    }
+
+    &-info {
+      width: 60%;
+
+      .content__header {
+        display: flex;
+        flex-flow: row nowrap;
+        font-size: 32px;
+        color: $color-white;
+
+        .content__title {
+          padding-right: 60px;
+          letter-spacing: 2px;
+        }
+
+        .content__rating {
+          font-size: 24px;
+          border: 1px solid $color-white;
+          border-radius: 50%;
+          padding: 10px;
+          color: lightgreen;
+        }
+      }
+
+      .content__genre {
+        display: flex;
+        align-self: flex-start;
+        color: $color-white;
+      }
+
+      .content__info {
+        display: flex;
+        flex-flow: row nowrap;
+        color: $color-pink;
+        font-size: 32px;
+        padding: 15px 0 ;
+
+        .content__releaseDate {
+          padding-right: 60px;
+        }
+      }
+
+      .content__description {
+        color: $color-white;
+        letter-spacing: 0.009px;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+}

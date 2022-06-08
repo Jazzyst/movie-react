@@ -1,0 +1,19 @@
+@import '../../../services/helpers/variables';
+
+.input {
+  select {
+    height: 50px;
+    padding-left: 15px;
+    background: $color-lightgrey none;
+    border: none;
+    font-size: 18px;
+    color: $color-grey;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  &__select {
+    width: 100%;
+  }
+}
