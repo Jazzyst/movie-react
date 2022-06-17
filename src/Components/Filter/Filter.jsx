@@ -1,35 +1,9 @@
 import  React from 'react';
 import './Filter.scss';
 import PropTypes from 'prop-types';
+import {filterList} from "../../Services/mock/filterListMock";
 
 export function Filter() {
-  const filterList = [
-    {
-      id: 1,
-      name: 'all',
-      active: true
-    },
-    {
-      id: 2,
-      name: 'documentary',
-      active: false
-    },
-    {
-      id: 3,
-      name: 'comedy',
-      active: false
-    },
-    {
-      id: 4,
-      name: 'horror',
-      active: false
-    },
-    {
-      id: 5,
-      name: 'crime',
-      active: false
-    }
-  ];
 
   const filter = filterList.map(el => <li key={el.id} className={`filters__item ${el.active ? 'active' : ''}`}>{el.name}</li>)
   return(

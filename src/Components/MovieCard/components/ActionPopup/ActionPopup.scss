@@ -1,0 +1,37 @@
+@import '../../../../services/helpers/variables';
+
+.action-popup {
+  position: relative;
+  right: 115px;
+  padding-top: 25px;
+  width: 200px;
+  height: 70px;
+  background-color: $color-darkgrey;
+  &__action {
+    display: flex;
+    justify-content: flex-start;
+    width: 100px;
+    padding: 5px 20px 5px 30px;
+    color: $color-white;
+  }
+
+  &__action:hover {
+    background-color: $color-pink;
+  }
+
+  .popup-close__btn {
+    background: transparent;
+    color: $color-white;
+    border:none;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+
+    &:before, &:after {
+      height: 15px;
+    }
+  }
+}
