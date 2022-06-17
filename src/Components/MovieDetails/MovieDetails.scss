@@ -3,43 +3,40 @@
 .movie-details {
   display: flex;
   flex-flow: column nowrap;
-  position: fixed;
-  height: 288px;
-  top: 0;
   width: 100%;
   padding: 35px 0 65px;
-  background-color: rgba(0,0,0,0.74);
-  backdrop-filter: blur(20px);
-  z-index: 2;
+  background-color: $color-darkgrey;
 
   &__header {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    margin: 0 35px;
+    margin: 0 50px;
 
     .search-button {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      border: 3px solid $color-pink;
-      background-color: rgba(0,0,0,0.74);
+      width: 28px;
+      height: 29px;
+      background-image: url('../../services/images/search-icon.svg');
+      background-size: contain;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
     }
   }
 
   &__content {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-self: center;
     width: 90%;
-    padding: 20px 40px 40px;
+    padding: 20px 40px 0;
 
     &-image {
-      width: 40%;
+      width: 200px;
+      margin-right: 50px;
       & img{
-        width: 150px;
-        height: 275px;
+        width: 100%
       }
     }
 

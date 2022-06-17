@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './MainPage.scss';
 import {Header} from "../../Containers/Header";
 import {Main} from "../../Containers/Main";
@@ -18,21 +18,28 @@ export function MainPage() {
     setMoviesList(new MoviesListView(movieList))
   },[]);
 
-  const toggleModalAdd = () => {
-    setModalAdd(!modalAdd);
-  };
+  const toggleModalAdd = useCallback(
+    () => {setModalAdd(!modalAdd)},
+    [modalAdd],
+  );
 
   const resetMovieDetails = () => {
     setMovieDetails(null);
   };
 
-  const setMovieById = (id) => {
-    setMovieDetails(moviesList.getMovieId(id));
-  };
+  const setMovieById = useCallback(
+    (id) => {setMovieDetails(moviesList.getMovieId(id))},
+    [movieDetails, moviesList],
+  );
 
   return (
     <>
-      <Header toggleModalAdd={toggleModalAdd}/>
+      {
+        movieDetails ?
+          <MovieDetails movieDetails={movieDetails} resetMovieDetails={resetMovieDetails}/> :
+          <Header toggleModalAdd={toggleModalAdd}/>
+      }
+
       <ErrorBoundary>
         {moviesList ? <Main setMovieById={setMovieById} moviesList={moviesList.list}/> : null}
       </ErrorBoundary>
@@ -40,9 +47,6 @@ export function MainPage() {
       <Footer/>
       {
         modalAdd ? <ModalAdd toggleModalAdd={toggleModalAdd}/> : null
-      }
-      {
-        movieDetails ? <MovieDetails movieDetails={movieDetails} resetMovieDetails={resetMovieDetails}/> : null
       }
     </>
   );
