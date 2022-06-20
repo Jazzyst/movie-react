@@ -20,11 +20,6 @@ export function MainPage() {
     setMoviesList(new MoviesListView(movieList))
   },[]);
 
-  const toggleModalAdd = useCallback(
-    () => {setModalAdd(!modalAdd)},
-    [modalAdd],
-  );
-
   const resetMovieDetails = () => {
     setMovieDetails(null);
   };
