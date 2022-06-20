@@ -8,11 +8,13 @@ import {MovieDetails} from "../../Components/MovieDetails";
 import {movieList} from "../../Services/mock/movieListMock";
 import {MoviesListView} from "./MoviesListView";
 import {ErrorBoundary} from "../../Components/ErrorBoundary/ErrorBoundary";
+import { useModal } from "../../hooks/useModal/useModal";
 
 export function MainPage() {
   const [modalAdd, setModalAdd] = useState(false);
   const [movieDetails, setMovieDetails] = useState(false);
   const [moviesList, setMoviesList] = useState(null);
+  const [isModalAddOpen, handleModalAddOpen, handleModalAddClose] = useModal();
 
   useEffect(() => {
     setMoviesList(new MoviesListView(movieList))
@@ -37,7 +39,7 @@ export function MainPage() {
       {
         movieDetails ?
           <MovieDetails movieDetails={movieDetails} resetMovieDetails={resetMovieDetails}/> :
-          <Header toggleModalAdd={toggleModalAdd}/>
+          <Header handleModalAddOpen={handleModalAddOpen}/>
       }
 
       <ErrorBoundary>
@@ -46,7 +48,7 @@ export function MainPage() {
 
       <Footer/>
       {
-        modalAdd ? <ModalAdd toggleModalAdd={toggleModalAdd}/> : null
+        isModalAddOpen ? <ModalAdd handleModalAddClose={handleModalAddClose}/> : null
       }
     </>
   );

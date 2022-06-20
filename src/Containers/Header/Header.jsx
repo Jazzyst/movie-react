@@ -6,13 +6,13 @@ import { SearchInput } from "../../Components/SearchInput";
 import { BtnSearch } from "../../Components/BtnSearch";
 import PropTypes from "prop-types";
 
-export function Header({toggleModalAdd}) {
+export function Header({handleModalAddOpen}) {
 
   return (
     <header className="header">
       <div className="header__logo">
         <Logo/>
-        <BtnAddMovie toggleModalAdd={toggleModalAdd}/>
+        <BtnAddMovie handleModalAddOpen={handleModalAddOpen}/>
       </div>
       <h1 className="header__title">FIND YOUR MOVIE</h1>
       <form className="header__search">

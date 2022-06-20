@@ -3,9 +3,9 @@ import { Input, DatePicker, Select } from "../../FormComponents";
 import { Button } from "../../FormComponents/Button";
 import { Modal } from "../Modal";
 
-export function ModalAdd({toggleModalAdd}) {
+export function ModalAdd({handleModalAddClose}) {
   return (
-    <Modal title='add movie' onClose={toggleModalAdd}>
+    <Modal title='add movie' handleModalAddClose={handleModalAddClose}>
       <div className="inputs-section">
         <div className="inputs-section__left">
           <Input label='Title' placeholder='Title'/>
