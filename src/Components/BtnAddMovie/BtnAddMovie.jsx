@@ -2,9 +2,9 @@ import React from 'react';
 import './BtnAddMovie.scss';
 import PropTypes from "prop-types";
 
-export function BtnAddMovie({toggleModalAdd}) {
+export function BtnAddMovie({handleModalAddOpen}) {
   return (
-    <button className="btn__add-movie" type="submit" onClick={toggleModalAdd}>+ add movie</button>
+    <button className="btn__add-movie" type="submit" onClick={handleModalAddOpen}>+ add movie</button>
   );
 }
 

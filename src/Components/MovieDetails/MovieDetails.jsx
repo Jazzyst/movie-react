@@ -8,9 +8,9 @@ export function  MovieDetails({movieDetails, resetMovieDetails}) {
     <div className='movie-details'>
       <div className="movie-details__header">
         <Logo/>
-        <Button type='search' className='search-button'/>
+        <Button type='search' className='search-button' onClick={resetMovieDetails}/>
       </div>
-      <div className="movie-details__content" onClick={resetMovieDetails}>
+      <div className="movie-details__content" >
         <div className="movie-details__content-image">
           <img src={movieDetails.img} alt=""/>
         </div>
