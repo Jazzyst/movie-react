@@ -67,6 +67,9 @@
         display: flex;
         align-self: flex-start;
         color: $color-white;
+        span {
+          margin-right: 10px;
+        }
       }
 
       .content__info {
