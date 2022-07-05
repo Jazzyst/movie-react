@@ -19,7 +19,7 @@ export const fetchMovies = (filterParams) => {
 }
 
 export const sortMoviesBy = (filterParams) => {
-  const sortBy = filterParams?.sortBy ? `?sortBy=${filterParams?.sortBy}` : '';
+  const sortBy = filterParams?.sortBy ? `?sortBy=${filterParams?.sortBy}&sortOrder=desc"` : '';
   const url = `/movies${sortBy}`
 
   return async dispatch => {
