@@ -5,7 +5,7 @@ import { Modal } from "../Modal";
 
 export function ModalAdd({handleModalAddClose}) {
   return (
-    <Modal title='add movie' handleModalAddClose={handleModalAddClose}>
+    <Modal title='add movie' onClose={handleModalAddClose}>
       <div className="inputs-section">
         <div className="inputs-section__left">
           <Input label='Title' placeholder='Title'/>

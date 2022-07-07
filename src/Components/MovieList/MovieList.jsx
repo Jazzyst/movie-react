@@ -3,12 +3,12 @@ import './MovieList.scss';
 import PropTypes from "prop-types";
 import { MovieCard } from "../MovieCard";
 
-export function MovieList({setMovieById, moviesList}) {
+export function MovieList({setMovieDetailsOpen, moviesList}) {
   const movies = moviesList.map(el => (
     <MovieCard
       key={el.id}
       movie={el}
-      setMovieById={() => setMovieById(el.id)}
+      setMovieDetailsOpen={setMovieDetailsOpen}
     />
   ));
   return (

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import './Modal.scss';
 import {Logo} from "../Logo";
 
-export function Modal({title, handleModalAddClose, children}) {
+export function Modal({title, onClose, children}) {
   return (
     <div className='modal'>
       <div className="modal-header">
@@ -12,7 +12,7 @@ export function Modal({title, handleModalAddClose, children}) {
       <div className="modal-content">
         <div className="modal-content__header">
           <h1 className='header__title'>{title}</h1>
-          <button type='button' className='modal-close__button' onClick={handleModalAddClose}/>
+          <button type='button' className='modal-close__button' onClick={onClose}/>
         </div>
         <div className="child-wrap">
           {children}

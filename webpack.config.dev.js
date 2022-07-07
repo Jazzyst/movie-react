@@ -13,6 +13,12 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
+    fallback: {
+      "fs": false,
+      "path": require.resolve("path-browserify"),
+      "url": require.resolve("url/"),
+      "assert": require.resolve("assert/")
+    },
     extensions: ['.js', '.jsx']
   },
   devtool: 'source-map',

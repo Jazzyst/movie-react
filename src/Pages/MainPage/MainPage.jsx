@@ -5,40 +5,38 @@ import {Main} from "../../Containers/Main";
 import {Footer} from "../../Containers/Footer";
 import {ModalAdd} from "../../Components/Modals/ModalAdd";
 import {MovieDetails} from "../../Components/MovieDetails";
-import {movieList} from "../../Services/mock/movieListMock";
+// import {movieList} from "../../Services/mock/movieListMock";
 import {MoviesListView} from "./MoviesListView";
 import {ErrorBoundary} from "../../Components/ErrorBoundary/ErrorBoundary";
 import { useModal } from "../../hooks/useModal/useModal";
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchMovies} from "../../API/actions/fetchMovies";
 
 export function MainPage() {
-  const [modalAdd, setModalAdd] = useState(false);
-  const [movieDetails, setMovieDetails] = useState(false);
-  const [moviesList, setMoviesList] = useState(null);
+  const [isMovieDetailsOpen, setMovieDetailsOpen] = useState(false);
   const [isModalAddOpen, handleModalAddOpen, handleModalAddClose] = useModal();
+  const dispatch = useDispatch();
+  const moviesList = useSelector(state => state.moviesState.movies);
+  const movieDetails = useSelector(state => state.moviesState.activeMovie);
 
   useEffect(() => {
-    setMoviesList(new MoviesListView(movieList))
+    dispatch(fetchMovies());
   },[]);
 
   const resetMovieDetails = () => {
-    setMovieDetails(null);
+    setMovieDetailsOpen(null);
   };
-
-  const setMovieById = useCallback(
-    (id) => {setMovieDetails(moviesList.getMovieId(id))},
-    [movieDetails, moviesList],
-  );
 
   return (
     <>
       {
-        movieDetails ?
+        isMovieDetailsOpen ?
           <MovieDetails movieDetails={movieDetails} resetMovieDetails={resetMovieDetails}/> :
           <Header handleModalAddOpen={handleModalAddOpen}/>
       }
 
       <ErrorBoundary>
-        {moviesList ? <Main setMovieById={setMovieById} moviesList={moviesList.list}/> : null}
+        {moviesList ? <Main setMovieDetailsOpen={setMovieDetailsOpen} moviesList={moviesList}/> : null}
       </ErrorBoundary>
 
       <Footer/>
