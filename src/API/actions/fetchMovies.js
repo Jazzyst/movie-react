@@ -33,10 +33,16 @@ export const sortMoviesBy = (filterParams) => {
   }
 }
 
-export const fetchMovieByID = (id) => async (dispatch) => {
-  return await fetch(`${baseUrl}/movies/${id}`, {
+export const fetchMovieByID = (id) => async (dispatch) => await fetch(`${baseUrl}/movies/${id}`, {
     method: 'GET'
   })
     .then(res =>res.json())
     .then(data => dispatch(fetchMovieDetails(data)));
-}
+
+export const fetchMovieBySearchString = (searchString) => async (dispatch) => await fetch(`${baseUrl}/movies?search=${searchString}&searchBy=title`, {
+  method: 'GET'
+})
+  .then(res =>res.json())
+  .then(data => dispatch(fetchMoviesSuccess(data.data)));
+
+

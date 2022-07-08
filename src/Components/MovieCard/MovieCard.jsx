@@ -6,6 +6,8 @@ import {ModalEdit} from "../Modals/ModalEdit";
 import {ModalDelete} from "../Modals/ModalDelete";
 import {useDispatch} from "react-redux";
 import {fetchMovieByID} from "../../API/actions/fetchMovies";
+import {Formik} from "formik";
+import {ValidateSchema} from "../Modals/ValidateSchema";
 
 export function MovieCard({movie, setMovieDetailsOpen}) {
   const dispatch = useDispatch();
@@ -48,10 +50,22 @@ export function MovieCard({movie, setMovieDetailsOpen}) {
         </div>
       </div>
 
-      {modalEdit ?
-        <ModalEdit toggleModalEdit={toggleModalEdit}/> : null}
+      {
+        modalEdit && <Formik validationSchema={ValidateSchema} initialValues={{}} onSubmit={() => {}}>
+          {
+            (formikProps) => {
+              console.log(formikProps)
+              const {dirty} = formikProps;
+              return (
+                <ModalEdit toggleModalEdit={toggleModalEdit} id={movie.id} setMovieDetailsOpen={setMovieDetailsOpen}/>
+              )
+            }
+          }
+        </Formik>
+      }
+
       {modalDelete ?
-        <ModalDelete toggleModalDelete={toggleModalDelete}/> : null}
+        <ModalDelete movie={movie} toggleModalDelete={toggleModalDelete} setMovieDetailsOpen={setMovieDetailsOpen}/> : null}
     </>
 
   );
