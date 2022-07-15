@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './MovieCard.scss';
 import { ActionBtn } from "./components/ActionBtn";
 import PropTypes from 'prop-types';
 import {ModalEdit} from "../Modals/ModalEdit";
 import {ModalDelete} from "../Modals/ModalDelete";
 import {useDispatch} from "react-redux";
-import {fetchMovieByID} from "../../API/actions/fetchMovies";
+import {fetchMovieByID, fetchMovies} from "../../API/actions/fetchMovies";
 import {Formik} from "formik";
 import {ValidateSchema} from "../Modals/ValidateSchema";
+import {useNavigate, useParams} from "react-router";
 
 export function MovieCard({movie, setMovieDetailsOpen}) {
   const dispatch = useDispatch();
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
 
   const toggleModalEdit = () => {
     setModalEdit(!modalEdit)
@@ -25,7 +29,20 @@ export function MovieCard({movie, setMovieDetailsOpen}) {
   const onShowMovieDetails = ()  => {
     setMovieDetailsOpen(true);
     dispatch(fetchMovieByID(movie.id))
+    setQuery(movie.id);
   }
+
+  useEffect(()=> {
+    const  params = new URLSearchParams();
+    if (query) {
+      params.append('movie', movie.id)
+    } else {
+      params.delete('movie');
+    }
+    navigate({search: params.toString()})
+  },[query])
+
+
 
   return (
     <>

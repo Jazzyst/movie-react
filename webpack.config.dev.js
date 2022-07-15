@@ -9,7 +9,8 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dev')
+    path: path.resolve(__dirname, 'dev'),
+    publicPath: '/'
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
@@ -23,6 +24,7 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, "dev")
     },

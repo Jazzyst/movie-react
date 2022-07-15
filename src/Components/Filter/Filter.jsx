@@ -1,17 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Filter.scss';
 import PropTypes from 'prop-types';
 import {filterList} from "../../Services/mock/filterListMock";
 import {useDispatch} from "react-redux";
 import {fetchMovies} from "../../API/actions/fetchMovies";
-
+import { useNavigate} from "react-router";
 
 export function Filter() {
   const dispatch = useDispatch();
   const [activeLink, setActiveLink] = useState(1);
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    const  params = new URLSearchParams();
+    if (query) {
+      params.append('genre', query)
+    } else {
+      params.delete('genre');
+    }
+    navigate({ search: params.toString()})
+  },[query]);
+
   const getMoviesByGenre = (genre, id) => {
-    dispatch(fetchMovies({filter: genre}))
+
+    setQuery(genre);
     setActiveLink(id);
+
+    dispatch(fetchMovies({filter: genre}))
+
   }
   const filter = filterList.map(el =>
     <li

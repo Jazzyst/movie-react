@@ -3,14 +3,16 @@ import {Logo} from "../Logo";
 import {Button} from "../FormComponents/Button";
 import './MovieDetails.scss';
 import PropTypes from "prop-types";
-import {MovieCard} from "../MovieCard";
+import {useNavigate} from "react-router";
 
-export function  MovieDetails({movieDetails, resetMovieDetails}) {
+
+export function  MovieDetails({movieDetails}) {
+  const navigate = useNavigate()
   return (
     <div className='movie-details'>
       <div className="movie-details__header">
         <Logo/>
-        <Button type='search' className='search-button' onClick={resetMovieDetails}/>
+        <Button type='search' className='search-button' onClick={() => navigate('/')}/>
       </div>
       <div className="movie-details__content" >
         <div className="movie-details__content-image">
