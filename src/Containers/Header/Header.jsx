@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './Header.scss';
 import { Logo } from "../../Components/Logo";
 import { BtnAddMovie } from "../../Components/BtnAddMovie";
@@ -6,15 +6,16 @@ import { SearchInput } from "../../Components/SearchInput";
 import { BtnSearch } from "../../Components/BtnSearch";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-//import {fetchMovies} from "../../API/api";
+import {fetchMovieBySearchString} from "../../API/actions/fetchMovies";
+
 
 
 export function Header({handleModalAddOpen}) {
   const [searchString, setSearchString] = useState('');
   const dispatch = useDispatch();
-
   const getMovies = () => {
-    // dispatch(fetchMovies(searchString))
+    dispatch(fetchMovieBySearchString(searchString));
+    setSearchString('');
   }
 
   return (
@@ -26,7 +27,7 @@ export function Header({handleModalAddOpen}) {
       <h1 className="header__title">FIND YOUR MOVIE</h1>
       <form className="header__search">
         <SearchInput searchString={searchString} setSearchString={setSearchString}/>
-        <BtnSearch type='button' /*getMovies={getMovies}*//>
+        <BtnSearch type='button' getMovies={getMovies}/>
       </form>
 
     </header>

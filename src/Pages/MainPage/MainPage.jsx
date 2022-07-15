@@ -5,12 +5,12 @@ import {Main} from "../../Containers/Main";
 import {Footer} from "../../Containers/Footer";
 import {ModalAdd} from "../../Components/Modals/ModalAdd";
 import {MovieDetails} from "../../Components/MovieDetails";
-// import {movieList} from "../../Services/mock/movieListMock";
-import {MoviesListView} from "./MoviesListView";
 import {ErrorBoundary} from "../../Components/ErrorBoundary/ErrorBoundary";
 import { useModal } from "../../hooks/useModal/useModal";
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchMovies} from "../../API/actions/fetchMovies";
+import { Formik } from 'formik';
+import {ValidateSchema} from "../../Components/Modals/ValidateSchema";
 
 export function MainPage() {
   const [isMovieDetailsOpen, setMovieDetailsOpen] = useState(false);
@@ -40,8 +40,18 @@ export function MainPage() {
       </ErrorBoundary>
 
       <Footer/>
+
       {
-        isModalAddOpen ? <ModalAdd handleModalAddClose={handleModalAddClose}/> : null
+        isModalAddOpen && <Formik validationSchema={ValidateSchema} initialValues={{}} onSubmit={() => {}}>
+          {
+            (formikProps) => {
+              const {dirty} = formikProps;
+              return (
+                <ModalAdd handleModalAddClose={handleModalAddClose}/>
+              )
+            }
+          }
+        </Formik>
       }
     </>
   );

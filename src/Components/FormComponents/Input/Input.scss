@@ -32,4 +32,22 @@
       font-size: 18px;
     }
   }
+
+  &--error {
+    input{
+      border: 1px solid $color-pink;
+    }
+  }
+
+  &__readonly {
+    background: $color-darkgrey;
+  }
+
+
+  .error-form{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-pink;
+  }
 }
