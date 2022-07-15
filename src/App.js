@@ -1,12 +1,10 @@
 import React from 'react';
 import {MainPage} from "./Pages/MainPage";
-import {createBrowserHistory} from "history";
+
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import './App.scss';
 import {NotFound} from "./Pages/NotFound";
 
-
-// export const history = createBrowserHistory();
 function App() {
   return (
     <BrowserRouter>
