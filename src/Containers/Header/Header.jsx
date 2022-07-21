@@ -7,15 +7,18 @@ import { BtnSearch } from "../../Components/BtnSearch";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {fetchMovieBySearchString} from "../../API/actions/fetchMovies";
+import {useNavigate} from "react-router";
 
 
 
 export function Header({handleModalAddOpen}) {
   const [searchString, setSearchString] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const getMovies = () => {
     dispatch(fetchMovieBySearchString(searchString));
     setSearchString('');
+    navigate(`/search/${searchString}`)
   }
 
   return (

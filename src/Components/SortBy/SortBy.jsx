@@ -1,12 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import './SortBy.scss';
 import {useDispatch} from "react-redux";
 import {sortMoviesBy} from "../../API/actions/fetchMovies";
+import {useNavigate} from "react-router";
+
 
 export function SortBy() {
   const dispatch = useDispatch();
   const [activeOptionValue, setActiveOptionValue] = useState('release_date');
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    const  params = new URLSearchParams();
+    if (query) {
+      params.append('sortBy', query);
+    } else {
+      params.delete('sortBy');
+    }
+    navigate({search: params.toString()})
+  },[navigate, query]);
+
   const optionList = [
     {
       id: 1,
@@ -23,6 +38,7 @@ export function SortBy() {
   const onHandleChange = (e) => {
     setActiveOptionValue(e.target.value);
     dispatch(sortMoviesBy({sortBy: activeOptionValue}));
+    setQuery(e.target.value);
   }
 
   const options = optionList.map(el => <option key={el.id} value={el.value}>{el.name}</option>)

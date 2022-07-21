@@ -8,19 +8,33 @@ import {MovieDetails} from "../../Components/MovieDetails";
 import {ErrorBoundary} from "../../Components/ErrorBoundary/ErrorBoundary";
 import { useModal } from "../../hooks/useModal/useModal";
 import {useDispatch, useSelector} from 'react-redux'
-import {fetchMovies} from "../../API/actions/fetchMovies";
+import {fetchMovieBySearchString, fetchMovies, sortMoviesBy} from "../../API/actions/fetchMovies";
 import { Formik } from 'formik';
 import {ValidateSchema} from "../../Components/Modals/ValidateSchema";
+import {useLocation, useParams} from "react-router";
 
+const useQuery = () => new URLSearchParams(useLocation().search);
 export function MainPage() {
   const [isMovieDetailsOpen, setMovieDetailsOpen] = useState(false);
   const [isModalAddOpen, handleModalAddOpen, handleModalAddClose] = useModal();
   const dispatch = useDispatch();
   const moviesList = useSelector(state => state.moviesState.movies);
   const movieDetails = useSelector(state => state.moviesState.activeMovie);
+  const query = useQuery();
+  const genre = query.get('genre');
+  const sortBy = query.get('sortBy');
+  const {searchQuery} = useParams();
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    if (genre){
+      dispatch(fetchMovies({filter: genre}));
+    } else if(searchQuery) {
+      dispatch(fetchMovieBySearchString(searchQuery));
+    } else if(sortBy) {
+      dispatch(sortMoviesBy({sortBy}));
+    } else {
+      dispatch(fetchMovies());
+    }
   },[]);
 
   const resetMovieDetails = () => {
