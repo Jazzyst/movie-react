@@ -12,7 +12,6 @@ function App() {
         <Route exact path='/' element={<Navigate replace to="/search" />}/>
         <Route path='/search' element={<MainPage/>}/>
         <Route path='/search/:searchQuery' element={<MainPage/>}/>
-        <Route path='/movie' element={<MainPage/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
