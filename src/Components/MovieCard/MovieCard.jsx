@@ -38,9 +38,6 @@ export function MovieCard({movie, setMovieDetailsOpen}) {
         <Link to={`/search?movie=${movie.id}`} className="movie-card__image" onClick={onShowMovieDetails}>
           <img src={movie.poster_path} alt={movie.title} />
         </Link>
-        {/*<div className="movie-card__image" onClick={onShowMovieDetails}>*/}
-        {/*  */}
-        {/*</div>*/}
         <ActionBtn toggleModalEdit={toggleModalEdit} toggleModalDelete={toggleModalDelete}/>
 
         <div className='movie-card__info'>
