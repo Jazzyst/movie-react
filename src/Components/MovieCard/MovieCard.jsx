@@ -5,17 +5,15 @@ import PropTypes from 'prop-types';
 import {ModalEdit} from "../Modals/ModalEdit";
 import {ModalDelete} from "../Modals/ModalDelete";
 import {useDispatch} from "react-redux";
-import {fetchMovieByID, fetchMovies} from "../../API/actions/fetchMovies";
+import {fetchMovieByID} from "../../API/actions/fetchMovies";
 import {Formik} from "formik";
 import {ValidateSchema} from "../Modals/ValidateSchema";
-import {useNavigate, useParams} from "react-router";
+import {Link} from "react-router-dom";
 
 export function MovieCard({movie, setMovieDetailsOpen}) {
   const dispatch = useDispatch();
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
-  const [query, setQuery] = useState('');
-  const navigate = useNavigate();
 
 
   const toggleModalEdit = () => {
@@ -29,27 +27,20 @@ export function MovieCard({movie, setMovieDetailsOpen}) {
   const onShowMovieDetails = ()  => {
     setMovieDetailsOpen(true);
     dispatch(fetchMovieByID(movie.id))
-    setQuery(movie.id);
   }
 
-  useEffect(()=> {
-    const  params = new URLSearchParams();
-    if (query) {
-      params.append('movie', movie.id)
-    } else {
-      params.delete('movie');
-    }
-    navigate({search: params.toString()})
-  },[query])
 
 
 
   return (
     <>
       <div className='movie-card' >
-        <div className="movie-card__image" onClick={onShowMovieDetails}>
+        <Link to={`/search?movie=${movie.id}`} className="movie-card__image" onClick={onShowMovieDetails}>
           <img src={movie.poster_path} alt={movie.title} />
-        </div>
+        </Link>
+        {/*<div className="movie-card__image" onClick={onShowMovieDetails}>*/}
+        {/*  */}
+        {/*</div>*/}
         <ActionBtn toggleModalEdit={toggleModalEdit} toggleModalDelete={toggleModalDelete}/>
 
         <div className='movie-card__info'>

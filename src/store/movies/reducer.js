@@ -1,10 +1,11 @@
 import * as actionTypes from './actionTypes';
 
-const initialState = {
+export const initialState = {
   loading: false,
   movies: [],
   activeMovie: {},
-  newMovie: null
+  newMovie: null,
+  updatedMovie: {}
 }
 
 export function reducer(state = initialState, action) {
@@ -34,6 +35,7 @@ export function reducer(state = initialState, action) {
     case actionTypes.UPDATE_MOVIE:
       return {
         ...state,
+        updatedMovie: action.payload
       };
     case actionTypes.CREATE_MOVIE:
       return {

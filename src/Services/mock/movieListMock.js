@@ -1,74 +1,86 @@
-import img1 from '../images/img1.jpg'
-import img2 from '../images/img2.jpg'
-import img3 from '../images/img3.jpg'
-import img4 from '../images/img4.jpg'
-import img5 from '../images/img5.jpg'
-import img6 from '../images/img6.jpg'
-
 export const movieList = [
   {
-    id: 1,
-    img: img1,
-    title: 'Pulp Fiction',
-    genre: 'Action & Adventure',
-    rating: 4.3,
-    releaseDate: 2004,
-    duration: '154 min',
-    description: 'Pulp Fiction '
+    id: 511679,
+    title: 'Héctor El Father: Conocerás la verdad',
+    tagline: '',
+    vote_average: 8.8,
+    vote_count: 5,
+    release_date: '2018-03-22',
+    poster_path: 'https://image.tmdb.org/t/p/w500/jwJoURyfm4XxtnYRtIOS2pYR9Np.jpg',
+    overview: '',
+    budget: 0,
+    revenue: 0,
+    genres: [
+      'Drama',
+    ],
+    runtime: 90,
   },
-
   {
-    id: 2,
-    img: img2,
-    title: 'Bohemian Rhapsody',
-    genre: 'Drama, Biography, Music',
-    rating: 4.3,
-    releaseDate: 2003,
-    duration: '154 min',
-    description: 'Bohemian Rhapsody '
+    id: 419680,
+    title: "Daddy's Home 2",
+    tagline: 'More Daddies. More Problems.',
+    vote_average: 5.9,
+    vote_count: 740,
+    release_date: '2017-11-09',
+    poster_path: 'https://image.tmdb.org/t/p/w500/rF2IoKL0IFmumEXQFUuB8LajTYP.jpg',
+    overview: 'Brad and Dusty must deal with their intrusive fathers during the holidays.',
+    budget: 69000000,
+    revenue: 119261377,
+    genres: [
+      'Comedy',
+    ],
+    runtime: 100,
   },
-
   {
-    id: 3,
-    img: img3,
-    title: 'Bill: Vol 2',
-    genre: 'Oscar Winning Movie',
-    rating: 4.3,
-    releaseDate: 1994,
-    duration: '154 min',
-    description: 'Kill Bill'
-  },
-
-  {
-    id: 4,
-    img: img4,
-    title: 'Avengers: War of Infinity',
-    genre: 'Action & Adventure',
-    rating: 4.3,
-    releaseDate: 2004,
-    duration: '154 min',
-    description: 'Avengers'
-  },
-
-  {
-    id: 5,
-    img: img5,
-    title: 'Inception',
-    genre: 'Action & Adventure',
-    rating: 4.3,
-    releaseDate: 2003,
-    duration: '154 min',
-    description: 'Inception '
-  },
-
-  {
-    id: 6,
-    img: img6,
-    title: 'Reservoir Dogs',
-    genre: 'Oscar Winning Movie',
-    rating: 4.3,
-    releaseDate: 1994,
-    duration: '154 min',
-    description: 'Reservoir Dogs'
+    id: 401561,
+    title: 'Mom and Dad',
+    tagline: 'Sometimes they just want to kill you',
+    vote_average: 5.6,
+    vote_count: 103,
+    release_date: '2017-09-24',
+    poster_path: 'https://image.tmdb.org/t/p/w500/fSaeahvo1GU7v4W6CX2y0j7fxMG.jpg',
+    overview: 'A teenage girl and her little brother must survive a wild 24 hours during which a mass hysteria of unknown origin causes parents to turn violently on their own kids.',
+    budget: 0,
+    revenue: 0,
+    genres: [
+      'Thriller',
+      'Horror',
+      'Comedy',
+    ],
+    runtime: 83,
   },
 ];
+
+export const itemToUpdate = {
+  id: 987654,
+  title: 'Héctor El Father: Conocerás la verdad',
+  tagline: '',
+  vote_average: 8.8,
+  vote_count: 5,
+  release_date: '2018-03-22',
+  poster_path: 'https://image.tmdb.org/t/p/w500/jwJoURyfm4XxtnYRtIOS2pYR9Np.jpg',
+  overview: '',
+  budget: 0,
+  revenue: 0,
+  genres: [
+    'Drama',
+  ],
+  runtime: 90,
+};
+
+export const newItemAdded = {
+  id: 123456,
+  title: 'HomeAlone',
+  tagline: '',
+  vote_average: 8.8,
+  vote_count: 5,
+  release_date: '2018-03-22',
+  poster_path: 'https://image.tmdb.org/t/p/w500/jwJoURyfm4XxtnYRtIOS2pYR9Np.jpg',
+  overview: '',
+  budget: 0,
+  revenue: 0,
+  genres: [
+    'Drama',
+  ],
+  runtime: 90,
+};

@@ -19,7 +19,9 @@ export function SortBy() {
     } else {
       params.delete('sortBy');
     }
-    navigate({search: params.toString()})
+    if (params.has('sortBy')) {
+      navigate({search: params.toString()})
+    }
   },[navigate, query]);
 
   const optionList = [
