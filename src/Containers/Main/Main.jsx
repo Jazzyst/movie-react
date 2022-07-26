@@ -4,10 +4,10 @@ import './Main.scss';
 import { MovieList } from "../../Components/MovieList";
 import {ErrorBoundary} from "../../Components/ErrorBoundary/ErrorBoundary";
 
-export function Main({setMovieDetailsOpen, moviesList}) {
+export function Main({setMovieDetailsOpen, moviesList, activeLink, setActiveLink}) {
   return (
     <main className='main'>
-      <SearchResults/>
+      <SearchResults activeLink={activeLink} setActiveLink={setActiveLink}/>
       <ErrorBoundary>
         <MovieList
           setMovieDetailsOpen={setMovieDetailsOpen}

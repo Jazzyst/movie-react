@@ -17,6 +17,7 @@ const useQuery = () => new URLSearchParams(useLocation().search);
 export function MainPage() {
   const [isMovieDetailsOpen, setMovieDetailsOpen] = useState(false);
   const [isModalAddOpen, handleModalAddOpen, handleModalAddClose] = useModal();
+  const [activeLink, setActiveLink] = useState('all');
   const dispatch = useDispatch();
   const moviesList = useSelector(state => state.moviesState.movies);
   const movieDetails = useSelector(state => state.moviesState.activeMovie);
@@ -25,8 +26,10 @@ export function MainPage() {
   const sortBy = query.get('sortBy');
   const {searchQuery} = useParams();
 
+
   useEffect(() => {
     if (genre){
+      setActiveLink(genre)
       dispatch(fetchMovies({filter: genre}));
     } else if(searchQuery) {
       dispatch(fetchMovieBySearchString(searchQuery));
@@ -50,7 +53,7 @@ export function MainPage() {
       }
 
       <ErrorBoundary>
-        {moviesList ? <Main setMovieDetailsOpen={setMovieDetailsOpen} moviesList={moviesList}/> : null}
+        {moviesList ? <Main setMovieDetailsOpen={setMovieDetailsOpen} moviesList={moviesList} activeLink={activeLink} setActiveLink={setActiveLink}/> : null}
       </ErrorBoundary>
 
       <Footer/>

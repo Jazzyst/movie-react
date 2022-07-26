@@ -4,11 +4,11 @@ import { SortBy } from "../SortBy";
 import './SearchResults.scss';
 import { ResultCount } from "../ResultCount";
 
-export function SearchResults() {
+export function SearchResults({activeLink, setActiveLink}) {
   return (
     <div className='search-result'>
       <div className="filters-wrap">
-        <Filter />
+        <Filter activeLink={activeLink} setActiveLink={setActiveLink}/>
         <SortBy />
       </div>
       <ResultCount />

@@ -6,23 +6,18 @@ import {useDispatch} from "react-redux";
 import {fetchMovies} from "../../API/actions/fetchMovies";
 import {Link} from "react-router-dom";
 
-export function Filter() {
+export function Filter({activeLink, setActiveLink}) {
   const dispatch = useDispatch();
-  const [activeLink, setActiveLink] = useState(1);
-
-  const getMoviesByGenre = (genre, id) => {
-
-    setActiveLink(id);
-
+  const getMoviesByGenre = (genre) => {
+    setActiveLink(genre);
     dispatch(fetchMovies({filter: genre}))
-
   }
   const filter = filterList.map(el =>
     <li
       onClick={() => getMoviesByGenre(el.name, el.id)}
       key={el.id}
 
-      className={`filters__item ${activeLink === el.id ? 'active' : ''}`} >
+      className={`filters__item ${activeLink === el.name ? 'active' : ''}`} >
       <Link to={`/search?genre=${el.name}`}>
         {el.name}
       </Link>
