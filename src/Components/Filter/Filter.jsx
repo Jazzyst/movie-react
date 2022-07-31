@@ -1,41 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import './Filter.scss';
 import PropTypes from 'prop-types';
 import {filterList} from "../../Services/mock/filterListMock";
 import {useDispatch} from "react-redux";
 import {fetchMovies} from "../../API/actions/fetchMovies";
-import { useNavigate} from "react-router";
+import {Link} from "react-router-dom";
 
-export function Filter() {
+export function Filter({activeLink, setActiveLink}) {
   const dispatch = useDispatch();
-  const [activeLink, setActiveLink] = useState(1);
-  const [query, setQuery] = useState('');
-  const navigate = useNavigate();
-
-  useEffect(()=> {
-    const  params = new URLSearchParams();
-    if (query) {
-      params.append('genre', query)
-    } else {
-      params.delete('genre');
-    }
-    navigate({ search: params.toString()})
-  },[query]);
-
-  const getMoviesByGenre = (genre, id) => {
-
-    setQuery(genre);
-    setActiveLink(id);
-
+  const getMoviesByGenre = (genre) => {
+    setActiveLink(genre);
     dispatch(fetchMovies({filter: genre}))
-
   }
   const filter = filterList.map(el =>
     <li
       onClick={() => getMoviesByGenre(el.name, el.id)}
       key={el.id}
 
-      className={`filters__item ${activeLink === el.id ? 'active' : ''}`} >{el.name}</li>
+      className={`filters__item ${activeLink === el.name ? 'active' : ''}`} >
+      <Link to={`/search?genre=${el.name}`}>
+        {el.name}
+      </Link>
+      </li>
   )
 
   return (
