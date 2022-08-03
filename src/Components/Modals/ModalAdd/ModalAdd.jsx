@@ -5,6 +5,22 @@ import { Modal } from "../Modal";
 import {useFormikContext} from "formik";
 import {useDispatch} from "react-redux";
 import {createNewMovie} from "../../../API/actions/manageMovies";
+import Stack from '@mui/material/Stack';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { purple } from '@mui/material/colors';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#f65261',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#11cb5f',
+    },
+  },
+});
 
 export function ModalAdd({handleModalAddClose}) {
   const {
@@ -116,8 +132,10 @@ export function ModalAdd({handleModalAddClose}) {
         />
 
         <div className='button__modals-actions'>
-          <Button label='Reset' className='primary' type='reset' type='reset' onClick={handleModalAddClose}/>
-          <Button label='Save' className='secondary' />
+          <Stack spacing={2} direction="row">
+              <Button label='Reset' className='primary' type='reset' type='reset' onClick={handleModalAddClose} variant="outlined"/>
+              <Button label='Save' className='secondary' variant="contained"/>
+          </Stack>
         </div>
       </form>
     </Modal>

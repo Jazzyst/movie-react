@@ -5,6 +5,7 @@ import { Modal } from "../Modal";
 import {useFormikContext} from "formik";
 import {useDispatch} from "react-redux";
 import {updateMovieByID} from "../../../API/actions/manageMovies";
+import Stack from "@mui/material/Stack";
 
 export function ModalEdit({toggleModalEdit, id, setMovieDetailsOpen}) {
   const {
@@ -120,8 +121,10 @@ export function ModalEdit({toggleModalEdit, id, setMovieDetailsOpen}) {
         />
 
         <div className='button__modals-actions'>
-          <Button label='Reset' className='primary' type='reset' onClick={toggleModalEdit}/>
-          <Button label='Save' className='secondary' />
+          <Stack spacing={2} direction="row">
+            <Button label='Reset' className='primary' type='reset'  onClick={toggleModalEdit} variant="outlined"/>
+            <Button label='Save' className='secondary' variant="contained"/>
+          </Stack>
         </div>
       </form>
     </Modal>
