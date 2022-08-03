@@ -12,7 +12,7 @@ export function  MovieDetails({movieDetails}) {
     <div className='movie-details'>
       <div className="movie-details__header">
         <Logo/>
-        <Button type='search' className='search-button' onClick={() => navigate('/')}/>
+        <button type='search' className='search-button' onClick={() => navigate('/')}/>
       </div>
       <div className="movie-details__content" >
         <div className="movie-details__content-image">
@@ -36,6 +36,7 @@ export function  MovieDetails({movieDetails}) {
     </div>
   )
 }
+export default React.memo(MovieDetails)
 
 MovieDetails.propTypes = {
   title: PropTypes.string,

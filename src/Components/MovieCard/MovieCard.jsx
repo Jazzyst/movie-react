@@ -76,6 +76,8 @@ export function MovieCard({movie, setMovieDetailsOpen}) {
   );
 }
 
+export default React.memo(MovieCard)
+
 MovieCard.propTypes = {
   title: PropTypes.string,
   release_date: PropTypes.number,
